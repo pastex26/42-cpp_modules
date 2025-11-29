@@ -32,12 +32,10 @@ Fixed::~Fixed() {
 }
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return _raw;
 }
 
 void Fixed::setRawBits(const int raw) {
-	std::cout << "setRawBits member function called" << std::endl;
 	_raw = raw;
 }
 
@@ -46,7 +44,7 @@ int	Fixed::toInt(void) const {
 }
 
 float	Fixed::toFloat(void) const {
-	return (_raw / (1 << _bits));
+	return (static_cast<float>(_raw) / (1 << _bits));
 }
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &fixed) {

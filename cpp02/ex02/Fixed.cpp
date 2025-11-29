@@ -107,7 +107,7 @@ int	Fixed::toInt(void) const {
 }
 
 float	Fixed::toFloat(void) const {
-	return ((float)_raw / (float)(1 << _bits));
+	return (static_cast<float>(_raw) / (1 << _bits));
 }
 
 // ###min / max###
