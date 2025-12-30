@@ -1,18 +1,22 @@
-#pragma once
+#ifndef ICE_HPP
+#define ICE_HPP
 
 #include "AMateria.hpp"
 
-class Ice : public AMateria {
+class Ice : public AMateria
+{
 public:
     Ice();
 
-    Ice(Ice const &other);
+    Ice(Ice const& other);
 
-    Ice &operator=(Ice const &other);
+    Ice& operator=(Ice const& other);
 
     ~Ice();
 
-    AMateria *clone() const;
+    AMateria* clone() const;
 
-    void use(ICharacter &target);
+    void use(ICharacter& target);
 };
+
+#endif

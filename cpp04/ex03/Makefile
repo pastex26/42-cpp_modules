@@ -13,10 +13,11 @@ SRC_DIR		=	src/
 INC_DIR		=	include/
 
 #							FILES	#
-
-SRC_FILES	=	main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
+INC_FILES	=	AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
+SRC_FILES	=	main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ_FILES	=	$(SRC_FILES:.cpp=.o)
 
+INC			=	$(addprefix $(INC_DIR), $(INC_FILES))
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
@@ -35,7 +36,7 @@ $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)Build successful -> $(NAME)$(RESET)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)Compiling $@...$(RESET)"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

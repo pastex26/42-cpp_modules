@@ -1,13 +1,11 @@
-#include "Animal.hpp"
+#include "../include/AAnimal.hpp"
 #include "Brain.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-#define NB 10
-
-int main(void)
+int main()
 {
-	Animal animals("patrick");
+    std::cout << "Hello World!" << std::endl;
 
-	return 0;
+    return 0;
 }

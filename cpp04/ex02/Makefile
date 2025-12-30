@@ -14,9 +14,11 @@ INC_DIR		=	include/
 
 #							FILES	#
 
-SRC_FILES	=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+INC_FILES	=	Cat.hpp Dog.hpp Brain.hpp AAnimal.hpp
+SRC_FILES	=	main.cpp AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJ_FILES	=	$(SRC_FILES:.cpp=.o)
 
+INC			=	$(addprefix $(INC_DIR), $(INC_FILES))
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
@@ -29,17 +31,13 @@ CXXFLAGS	=	-Wall -Wextra -Werror -Wshadow -std=c++98 -I $(INC_DIR)
 
 #							RULES	#
 
-all: print_flags $(NAME)
-
-print_flags:
-	@echo "$(BLUE)Compiler: $(CXX)$(RESET)"
-	@echo "$(BLUE)Flags: $(CXXFLAGS)$(RESET)"
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)Build successful -> $(NAME)$(RESET)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)Compiling $@...$(RESET)"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

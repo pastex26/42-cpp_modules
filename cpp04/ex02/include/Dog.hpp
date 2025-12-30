@@ -1,18 +1,22 @@
-#pragma once
-#include "Brain.hpp"
-#include "Animal.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-class Dog : public Animal
+#include "Brain.hpp"
+#include "AAnimal.hpp"
+
+class Dog : public AAnimal
 {
 private:
-	Brain *_brain;
+    Brain* _brain;
 
 public:
-	Dog();
-	Dog(const Dog &other);
-	Dog &operator=(const Dog &other);
-	~Dog();
+    Dog();
+    Dog(const Dog& other);
+    Dog& operator=(const Dog& other);
+    ~Dog();
 
-	void makeSound(void) const;
-	Brain &getBrain(void) const;
+    void makeSound() const;
+    Brain& getBrain() const;
 };
+
+#endif
